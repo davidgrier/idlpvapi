@@ -33,7 +33,7 @@
 ; MODIFICATION HISTORY:
 ; 11/02/2011 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2011 David G. Grier
+; Copyright (c) 2011-2015 David G. Grier
 ;-
 function pvattrname, camera, str, debug = debug
 

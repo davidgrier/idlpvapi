@@ -36,7 +36,7 @@
 ; MODIFICATION HISTORY:
 ; 12/11/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvattrlist, camera, err, debug = debug
 
@@ -45,7 +45,7 @@ COMPILE_OPT IDL2
 debug = keyword_set(debug)
 
 count = 0UL
-err = call_external("idlpvapi.so", "idlPvCountAttributes", /cdecl, debug, $
+err = call_external(pvlib(), "idlPvCountAttributes", /cdecl, debug, $
                     long(camera), count)
 
 if (err ne 0) then begin
@@ -57,7 +57,7 @@ if debug then print, "PvAttrList: ", count, " attributes"
 
 list = strarr(count)
 
-err = call_external("idlpvapi.so", "idlPvAttrList", /cdecl, debug, $
+err = call_external(pvlib(), "idlPvAttrList", /cdecl, debug, $
                     ulong(camera), list)
 
 if debug then print, "PvAttrList: ", pvstrerr(err)

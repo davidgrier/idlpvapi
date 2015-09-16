@@ -38,7 +38,7 @@
 ; MODIFICATION HISTORY:
 ; 12/12/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvcapturetransferframe, camera, err, debug = debug
 
@@ -52,7 +52,7 @@ err = PvAttrUint32(camera, "Height", h, /get, debug = debug)
 depth = framesize/w/h
 
 a = bytarr(w, h)
-err = call_external("idlpvapi.so", "idlPvCaptureTransferFrame", /cdecl, $
+err = call_external(pvlib(), "idlPvCaptureTransferFrame", /cdecl, $
                     debug, a)
 
 if debug then print, "PvCaptureQueueFrame: ", pvstrerr(err)

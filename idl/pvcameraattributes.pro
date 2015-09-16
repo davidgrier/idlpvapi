@@ -37,7 +37,7 @@
 ; MODIFICATION HISTORY:
 ; 12/12/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvcameraattributes, camera, print = print, debug = debug
 

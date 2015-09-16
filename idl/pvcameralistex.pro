@@ -34,7 +34,7 @@
 ; 12/09/2010 Written by David G. Grier, New York University
 ; 12/11/2010 DGG Added debug code and COMPILE_OPT.
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvcameralistex, maxncameras, debug = debug
 
@@ -44,7 +44,7 @@ debug = keyword_set(debug)
 
 if n_params() lt 1 then maxncameras = 1UL
 
-ncameras = call_external("idlpvapi.so",  "idlPvCameraListEx", /cdecl, debug, $
+ncameras = call_external(pvlib(),  "idlPvCameraListEx", /cdecl, debug, $
                          ulong(maxncameras), /UL_VALUE)
 
 if debug then print, "PvCameraListEx: ", ncameras, " cameras found"
@@ -74,7 +74,7 @@ info = replicate( $
         interfacetype:interfacetype}, ncameras)
 
 for camera = 0UL, ncameras-1 do begin
-   err = call_external("idlpvapi.so", "idlTransferCameraListEx", /cdecl, debug, $
+   err = call_external(pvlib(), "idlTransferCameraListEx", /cdecl, debug, $
                        ulong(camera), $
                        structver, uniqueid, cameraname, $
                        modelname, partnumber, serialnumber, firmwareversion, $

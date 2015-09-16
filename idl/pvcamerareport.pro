@@ -17,7 +17,7 @@
 ; MODIFICATION HISTORY:
 ; 12/13/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 pro pvcamerareport, camera, debug = debug
 

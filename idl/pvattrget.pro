@@ -33,7 +33,7 @@
 ; MODIFICATION HISTORY:
 ; 11/02/2011 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2011 David G. Grier
+; Copyright (c) 2011-2015 David G. Grier
 ;-
 function pvattrget, camera, attr, debug = debug
 
@@ -62,22 +62,22 @@ err = 0
 case info[0] of
    3: begin                     ; String
       val = ''
-      err = call_external("idlpvapi.so", "idlPvAttrStringGet", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrStringGet", /cdecl, $
                           debug, ulong(camera), string(attr), val)
    end
    4: begin                     ; Enum
       val = ''
-      err = call_external("idlpvapi.so", "idlPvAttrEnumGet", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrEnumGet", /cdecl, $
                           debug, ulong(camera), string(attr), val)
    end
    5: begin                     ; Uint32
       val = 0UL
-      err = call_external("idlpvapi.so", "idlPvAttrUint32Get", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrUint32Get", /cdecl, $
                           debug, ulong(camera), string(attr), val)
    end
    6: begin                     ; Float32
       val = 0.
-      err = call_external("idlpvapi.so", "idlPvAttrFloat32Get", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrFloat32Get", /cdecl, $
                           debug, ulong(camera), string(attr), val)
    end
 else: val = -1

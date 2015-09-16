@@ -38,7 +38,7 @@
 ; 12/12/2010 Written by David G. Grier, New York University
 ; 03/14/2011 DGG. Include command in debugging message.
 ;
-; Copyright (c) 2010-2011, David G. Grier
+; Copyright (c) 2010-2015, David G. Grier
 ;-
 function pvcommandrun, camera, command, debug = debug
 
@@ -46,7 +46,7 @@ COMPILE_OPT IDL2
 
 debug = keyword_set(debug)
 
-err = call_external("idlpvapi.so",  "idlPvCommandRun", /cdecl, debug, $
+err = call_external(pvlib(),  "idlPvCommandRun", /cdecl, debug, $
                     ulong(camera), string(command))
 
 if debug then print, "PvCommandRun: " + string(command) + ": ", pvstrerr(err)

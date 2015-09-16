@@ -33,7 +33,7 @@
 ; MODIFICATION HISTORY:
 ; 11/02/2011 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2011 David G. Grier
+; Copyright (c) 2011-2015 David G. Grier
 ;-
 function pvattrrange, camera, attr, debug = debug
 
@@ -61,20 +61,20 @@ endif
 case info[0] of
    4: begin                     ; Enum
       value = ''
-      err = call_external("idlpvapi.so", "idlPvAttrEnumRange", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrEnumRange", /cdecl, $
                           debug, ulong(camera), string(attr), value)
    end
    5: begin                     ; Uint32
       min = 0UL
       max = 0UL
-      err = call_external("idlpvapi.so", "idlPvAttrUint32Range", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrUint32Range", /cdecl, $
                           debug, ulong(camera), string(attr), min, max)
       value = [min, max]
    end
    6: begin                     ; Float32
       min = 0.
       max = 0.
-      err = call_external("idlpvapi.so", "idlPvAttrFloat32Range", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrFloat32Range", /cdecl, $
                           debug, ulong(camera), string(attr), min, max)
       value = [min, max]
    end

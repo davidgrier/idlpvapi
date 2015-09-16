@@ -36,7 +36,7 @@
 ; MODIFICATION HISTORY:
 ; 12/11/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvcapturewaitforframedone, camera, timeout, debug = debug
 
@@ -44,7 +44,7 @@ COMPILE_OPT IDL2
 
 debug = keyword_set(debug)
 
-err = call_external("idlpvapi.so",  "idlPvCaptureWaitForFrameDone", /cdecl, $
+err = call_external(pvlib(),  "idlPvCaptureWaitForFrameDone", /cdecl, $
                     debug, $
                     ulong(camera), ulong(timeout))
 

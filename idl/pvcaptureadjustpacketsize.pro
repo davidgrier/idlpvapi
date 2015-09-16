@@ -35,7 +35,7 @@
 ; MODIFICATION HISTORY:
 ; 03/17/2011 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2011, David G. Grier
+; Copyright (c) 2011-2015 David G. Grier
 ;-
 function pvcaptureadjustpacketsize, camera, packetsize, debug = debug
 
@@ -43,7 +43,7 @@ COMPILE_OPT IDL2
 
 debug = keyword_set(debug)
 
-err = call_external("idlpvapi.so",  "idlPvCaptureAdjustPacketSize", /cdecl, $
+err = call_external(pvlib(),  "idlPvCaptureAdjustPacketSize", /cdecl, $
                     debug, $
                     ulong(camera), ulong(packetsize))
 

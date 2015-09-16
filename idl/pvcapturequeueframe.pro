@@ -44,7 +44,7 @@
 ; 03/14/2011 DGG Allocate buffer with correct geometry, rather than a
 ;     linear buffer.
 ;
-; Copyright (c) 2010-2011, David G. Grier
+; Copyright (c) 2010-2015, David G. Grier
 ;-
 function pvcapturequeueframe, camera, buffer, flags, $
                               allocate = allocate, debug = debug
@@ -69,7 +69,7 @@ endif else begin
       message, "flags must be an array of four elements: not queued", /inf
 endelse
 
-err = call_external("idlpvapi.so", "idlPvCaptureQueueFrame", /cdecl, debug, $
+err = call_external(pvlib(), "idlPvCaptureQueueFrame", /cdecl, debug, $
                     ulong(camera), buffer, framesize, flags)
 
 if debug then print, "PvCaptureQueueFrame: ", pvstrerr(err)

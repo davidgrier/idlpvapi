@@ -40,7 +40,7 @@
 ; MODIFICATION HISTORY:
 ; 12/11/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvattrinfo, camera, name, err, string = string, debug = debug
 
@@ -50,7 +50,7 @@ debug = keyword_set(debug)
 
 datatype = 0UL
 flags = 0UL
-err = call_external("idlpvapi.so",  "idlPvAttrInfo", /cdecl, debug, $
+err = call_external(pvlib(),  "idlPvAttrInfo", /cdecl, debug, $
                     ulong(camera), string(name), datatype, flags)
 
 if debug then print, "PvAttrInfo: ", pvstrerr(err)

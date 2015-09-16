@@ -28,7 +28,7 @@
 ; 12/07/2010 Written by David G. Grier, New York University
 ; 12/11/2010 DGG Added debug code and COMPILE_OPT.
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvinitialize, debug = debug
 
@@ -36,7 +36,7 @@ COMPILE_OPT IDL2
 
 debug = keyword_set(debug)
 
-err = call_external("idlpvapi.so",  "idlPvInitialize", /cdecl, debug)
+err = call_external(pvlib(),  "idlPvInitialize", /cdecl, debug)
 
 if debug then print, "PvInitialize: ", pvstrerr(err)
 

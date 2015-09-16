@@ -28,7 +28,7 @@
 ; MODIFICATION HISTORY:
 ; 12/07/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvversion, debug = debug
 
@@ -37,7 +37,7 @@ debug = keyword_set(debug)
 major = 0UL
 minor = 0UL
 
-n = call_external("idlpvapi.so", "idlPvVersion", /cdecl, debug, major, minor)
+n = call_external(pvlib(), "idlPvVersion", /cdecl, debug, major, minor)
 
 return, [major, minor]
 end

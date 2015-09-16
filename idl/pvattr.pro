@@ -43,7 +43,7 @@
 ;    GET or RANGE requests on unknown attribute types
 ; 03/14/2011 DGG include attribute name in debugging messages
 ;
-; Copyright (c) 2010-2011, David G. Grier
+; Copyright (c) 2010-2015, David G. Grier
 ;-
 ;
 ; Enumerated Attributes
@@ -57,14 +57,14 @@ debug = keyword_set(debug)
 
 if keyword_set(get) then begin
    value = ""
-   err = call_external("idlpvapi.so", "idlPvAttrEnumGet", /cdecl, debug, $
+   err = call_external(pvlib(), "idlPvAttrEnumGet", /cdecl, debug, $
                        ulong(camera), string(name), value)
 endif else if keyword_set(range) then begin
    value = ""
-   err = call_external("idlpvapi.so", "idlPvAttrEnumRange", /cdecl, debug, $
+   err = call_external(pvlib(). "idlPvAttrEnumRange", /cdecl, debug, $
                        ulong(camera), string(name), value)
 endif else $
-   err = call_external("idlpvapi.so",  "idlPvAttrEnumSet", /cdecl, debug, $
+   err = call_external(pvlib().  "idlPvAttrEnumSet", /cdecl, debug, $
                        ulong(camera), string(name), string(value))
 
 if debug then print, "PvAttrEnum: " + $
@@ -85,16 +85,16 @@ debug = keyword_set(debug)
 
 if keyword_set(get) then begin
    value = 0UL
-   err = call_external("idlpvapi.so", "idlPvAttrUint32Get", /cdecl, debug, $
+   err = call_external(pvlib(). "idlPvAttrUint32Get", /cdecl, debug, $
                        ulong(camera), string(name), value)
 endif else if keyword_set(range) then begin
    vmin = 0UL
    vmax = 0UL
-   err = call_external("idlpvapi.so", "idlPvAttrUint32Range", /cdecl, debug, $
+   err = call_external(pvlib(). "idlPvAttrUint32Range", /cdecl, debug, $
                        ulong(camera), string(name), vmin, vmax)
    value = [vmin, vmax]
 endif else $
-   err = call_external("idlpvapi.so",  "idlPvAttrUint32Set", /cdecl, debug, $
+   err = call_external(pvlib().  "idlPvAttrUint32Set", /cdecl, debug, $
                        ulong(camera), string(name), ulong(value))
 
 if debug then print, "PvAttrUint32: " + $
@@ -115,16 +115,16 @@ debug = keyword_set(debug)
 
 if keyword_set(get) then begin
    value = 0.
-   err = call_external("idlpvapi.so", "idlPvAttrFloat32Get", /cdecl, debug, $
+   err = call_external(pvlib(). "idlPvAttrFloat32Get", /cdecl, debug, $
                        ulong(camera), string(name), value)
 endif else if keyword_set(range) then begin
    vmin = 0.
    vmax = 0.
-   err = call_external("idlpvapi.so", "idlPvAttrFloat32Range", /cdecl, debug, $
+   err = call_external(pvlib(). "idlPvAttrFloat32Range", /cdecl, debug, $
                        ulong(camera), string(name), vmin, vmax)
    value = [vmin, vmax]
 endif else $
-   err = call_external("idlpvapi.so",  "idlPvAttrFloat32Set", /cdecl, debug, $
+   err = call_external(pvlib().  "idlPvAttrFloat32Set", /cdecl, debug, $
                        ulong(camera), string(name), float(value))
 
 if debug then print, "PvAttrFloat32: " + $
@@ -148,10 +148,10 @@ if keyword_set(range) then begin
    err = 0
 endif else if keyword_set(get) then begin
    value = ""
-   err = call_external("idlpvapi.so", "idlPvAttrStringGet", /cdecl, debug, $
+   err = call_external(pvlib(). "idlPvAttrStringGet", /cdecl, debug, $
                        ulong(camera), string(name), value)
 endif else $
-   err = call_external("idlpvapi.so",  "idlPvAttrStringSet", /cdecl, debug, $
+   err = call_external(pvlib().  "idlPvAttrStringSet", /cdecl, debug, $
                        ulong(camera), string(name), string(value))
 
 if debug then print, "PvAttrString: " + $

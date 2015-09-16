@@ -40,7 +40,7 @@
 ; 12/11/2010 Written by David G. Grier, New York University
 ; 03/14/2011 DGG include name of attribute in debugging message.
 ;
-; Copyright (c) 2010-2011, David G. Grier
+; Copyright (c) 2010-2015, David G. Grier
 ;-
 function pvattrisavailable, camera, name, err, debug = debug
 
@@ -48,7 +48,7 @@ COMPILE_OPT IDL2
 
 debug = keyword_set(debug)
 
-err = call_external("idlpvapi.so",  "idlPvAttrIsAvailable", /cdecl, debug, $
+err = call_external(pvlib(),  "idlPvAttrIsAvailable", /cdecl, debug, $
                     ulong(camera), string(name))
 
 if debug then print, "PvAttrIsAvailable: " + string(name) + ": ", pvstrerr(err)

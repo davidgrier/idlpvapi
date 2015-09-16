@@ -25,7 +25,7 @@
 ; 12/07/2010 Written by David G. Grier, New York University
 ; 12/11/2010 DGG Edited strings, corrected entries.  Added COMPILE_OPT.
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvstrerr, err
 

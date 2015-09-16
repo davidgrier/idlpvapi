@@ -36,7 +36,7 @@
 ; MODIFICATION HISTORY:
 ; 12/11/2010 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2010 David G. Grier
+; Copyright (c) 2010-2015 David G. Grier
 ;-
 function pvcameraopen, camera, monitor = monitor, debug = debug
 
@@ -46,7 +46,7 @@ debug = keyword_set(debug)
 
 accessmode = (keyword_set(monitor)) ? 0UL : 1UL
 
-err = call_external("idlpvapi.so",  "idlPvCameraOpen", /cdecl, debug, $
+err = call_external(pvlib(),  "idlPvCameraOpen", /cdecl, debug, $
                     ulong(camera), accessmode)
 
 if debug then print, "PvCameraOpen: ", pvstrerr(err)

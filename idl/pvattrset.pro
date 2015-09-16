@@ -35,7 +35,7 @@
 ; MODIFICATION HISTORY:
 ; 11/02/2011 Written by David G. Grier, New York University
 ;
-; Copyright (c) 2011 David G. Grier
+; Copyright (c) 2011-2015 David G. Grier
 ;-
 function pvattrset, camera, attr, value, debug = debug
 
@@ -62,11 +62,11 @@ endif
 
 case info[0] of
    3: begin                     ; String
-      err = call_external("idlpvapi.so", "idlPvAttrStringSet", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrStringSet", /cdecl, $
                           debug, ulong(camera), string(attr), string(value))
    end
    4: begin                     ; Enum
-      err = call_external("idlpvapi.so", "idlPvAttrEnumSet", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrEnumSet", /cdecl, $
                           debug, ulong(camera), string(attr), string(value))
    end
    5: begin                     ; Uint32
@@ -74,7 +74,7 @@ case info[0] of
       if n_elements(range) eq 1 || value lt range[0] || value gt range[1] then $
          err = -1 $
       else $
-      err = call_external("idlpvapi.so", "idlPvAttrUint32Set", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrUint32Set", /cdecl, $
                           debug, ulong(camera), string(attr), ulong(value))
    end
    6: begin                     ; Float32
@@ -82,7 +82,7 @@ case info[0] of
       if n_elements(range) eq 1 || value lt range[0] || value gt range[1] then $
          err = -1 $
       else $
-      err = call_external("idlpvapi.so", "idlPvAttrFloat32Set", /cdecl, $
+      err = call_external(pvlib(), "idlPvAttrFloat32Set", /cdecl, $
                           debug, ulong(camera), string(attr), float(value))
    end
 else: begin
