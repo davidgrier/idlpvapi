@@ -10,28 +10,39 @@
 # Copyright (c) 2010 David G. Grier
 #
 TARGET = idlpvapi
-BINDIR = /usr/local/lib
-IDLDIR = /usr/local/exelis/idl/bin/bin.linux.x86_64
-PRODIR = $(HOME)/idl/idlpvapi
+
+SYS =  $(shell uname -s | tr '[:upper:]' '[:lower:]')
+ARCH = $(shell uname -m)
+#LIBRARY = $(TARGET).$(SYS).$(ARCH).so
+LIBRARY = $(TARGET).so
+
+IDLDIR = /usr/local/exelis/idl
 
 CC = gcc
 LD = ld
 INSTALL = install
 
 CFLAGS = -Wall -O -fPIC -D_LINUX -D_x64 -m64 -D_REENTRANT
-INCLUDES = -I/usr/local/itt/idl/idl/external/include \
+INCLUDES = -I$(IDLDIR)/external/include \
 	-I/usr/local/include/pvapi
 LD_FLAGS = -shared
 LIBS = -L/usr/local/lib -lPvAPI
 
+SRC = $(TARGET).c
 OBJS = $(TARGET).o
 HEADERS = $(TARGET).h
-SOURCES = $(TARGET).c $(HEADERS)
 
-all: $(TARGET).so
+all: $(LIBRARY)
 
-$(TARGET).so: $(OBJS)
-	$(LD) $(LD_FLAGS) -o $(TARGET).so $(OBJS) $(LIBS)
+$(LIBRARY): $(OBJS)
+	$(LD) $(LD_FLAGS) -o $(LIBRARY) $(OBJS) $(LIBS)
+
+install: $(LIBRARY)
+	sudo $(INSTALL) -d $(DESTINATION)
+	sudo $(INSTALL) $(LIBRARY) $(DESTINATION)
+
+uninstall:
+	sudo rm -rf $(DESTINATION)
 
 clean:
 	-rm $(TARGET).so $(TARGET).o

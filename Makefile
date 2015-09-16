@@ -1,5 +1,5 @@
 IDLDIR = /usr/local/IDL
-PRODIR = $(IDLDIR)/idlvideo
+PRODIR = $(IDLDIR)/idlpvapi
 LIBDIR = $(PRODIR)
 
 all: 
