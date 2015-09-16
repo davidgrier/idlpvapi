@@ -1,31 +1,4 @@
-FILES = pvattrget.pro \
-        pvattrinfo.pro \
-        pvattrisavailable.pro \
-        pvattrlist.pro \
-        pvattrname.pro \
-        pvattr.pro \
-        pvattrrange.pro \
-        pvattrset.pro \
-        pvcameraattributes.pro \
-        pvcameraclose.pro \
-        pvcameracount.pro \
-        pvcamera__define.pro \
-        pvcameralistex.pro \
-        pvcameraopen.pro \
-        pvcamerareport.pro \
-        pvcaptureadjustpacketsize.pro \
-        pvcaptureend.pro \
-        pvcapturequeueframe.pro \
-        pvcapturestart.pro \
-        pvcapturetransferframe.pro \
-        pvcapturewaitforframedone.pro \
-        pvcommandrun.pro \
-        pvinitialize.pro \
-        pvstrerr.pro \
-        pvstrinfo.pro \
-        pvuninitialize.pro \
-        pvversion.pro
-
+FILES = $(wildcard *.pro)
 INSTALL = install
 DESTINATION = pro
 

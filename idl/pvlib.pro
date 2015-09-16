@@ -15,5 +15,5 @@ function pvlib
 
   COMPILE_OPT IDL2, HIDDEN
 
-  return, "/usr/local/IDL/pvapi/idlpvapi.so"
+  return, "/usr/local/IDL/idlpvapi/idlpvapi.so"
 end
